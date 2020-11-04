@@ -40,7 +40,7 @@
                     +852 2152 9521</a></li>
                 </ul>
                 <ul class="list-right">
-                  <li><a href="register.html">Register</a></li>
+                  <li><a href="{% url 'register' %}">Register</a></li>
                   <li><a href="#">Sign In</a></li>
                   <li><a href="cart-page.html">
                     <img src="{% static 'images/icons/shopping-cart.png' %}" alt="cart">
@@ -117,7 +117,7 @@
             </div>
           </nav>
         </header><!---header ends-->
-
+{% block content %}
         <div class="main-banner">
           <div class="container">
             <div class="row">
@@ -398,7 +398,7 @@
             </div>
           </div>
         </div>
-
+{% endblock %}
         <footer>
           <div class="container">
             <div class="footer-list">
@@ -472,6 +472,7 @@
           </div>
         </footer>
         <!-- Modal -->
+        {% block para %}
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -486,6 +487,7 @@
             </div>
           </div>
         </div>
+        {% endblock %}
 
     </div>  <!----page-wrapper ends-->
     <!-- Optional JavaScript -->

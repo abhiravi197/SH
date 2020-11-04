@@ -1,4 +1,5 @@
 <!doctype html>
+{% extends 'index.html' %}
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -19,100 +20,7 @@
     <title>SHAP</title>
   </head>
   <body>
-    <div class="page-wrapper">
-        <!---navbar area-->
-        <header>
-          <div class="top-nav">
-            <div class="container">
-              <div class="list-area">
-                <ul class="list-left">
-                  <li><a href="#">
-                    <img src="assets/images/icons/mail.png" alt="mail" style="width: 20px;">
-                    info@shap.com</a></li>
-                  <li><a href="#">
-                    
-                    <img src="assets/images/icons/phone.png" alt="phone" style="width: 16px; margin: -3px;">
-                    +852 2152 9521</a></li>
-                </ul>
-                <ul class="list-right">
-                  <li><a href="register.html">Register</a></li>
-                  <li><a href="#">Sign In</a></li>
-                  <li><a href="cart-page.html">
-                    <img src="assets/images/icons/shopping-cart.png" alt="cart">
-                  </a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <nav class="navbar navbar-expand-lg">
-            <div class="container">
-              <a class="navbar-brand" href="index.html">
-                <img src="assets/images/logo-shap.png" class="logo-shap" alt="shap_logo">
-              </a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">
-                  <img src="assets/images/icons/menu.png" alt="menu">
-                </span>
-              </button>
-            
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Beer
-                       <span><img src="assets/images/icons/Layer -2.png" alt="caret" class="caret-icon"></span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="about.html">About</a>
-                      <a class="dropdown-item" href="products.html">Products</a>
-                      <a class="dropdown-item" href="cart-page.html">Cart</a>
-                      <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
-                      <a class="dropdown-item" href="register.html">Register</a>
-                    </div>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Wine <span><img src="assets/images/icons/Layer -2.png" alt="caret" class="caret-icon"></span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </div>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Liquor <span><img src="assets/images/icons/Layer -2.png" alt="caret" class="caret-icon"></span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </div>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Snacks <span><img src="assets/images/icons/Layer -2.png" alt="caret" class="caret-icon"></span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </div>
-                  </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                  <div class="search-bind">
-                    <img src="assets/images/icons/search-icon.png" class="search-icon" alt="search-icon">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  </div>
-                  <a href="products.html" class="btn item-btn">Show all items</a>
-                </form>
-              </div>
-            </div>
-          </nav>
-        </header><!---header ends-->
-
+    {% block content %}
         <div class="register-section">
             <div class="container">
                 <div class="row">
@@ -123,8 +31,14 @@
                                 <small>All information required</small>
                             </div>
 
-                            <form class="row">
-                                <div class="form-group col-lg-6 col-md-6">
+                            <form class="row" method="POST">
+                              {% csrf_token %}
+
+                              {% for field in form %}
+                              {{ field.label }}
+                              {{ field }}
+                              {% endfor %}
+                                <!-- <div class="form-group col-lg-6 col-md-6">
                                     <input type="text" class="form-control" placeholder="First Name *">
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6">
@@ -157,13 +71,13 @@
                                     <label class="form-check-label" for="exampleRadios1" style="margin-right: 20px;">
                                     Female
                                     </label>
-                                <!-- </div>
-                                <div class="form-check"> -->
+                                </div>
+                                <div class="form-check"> 
                                     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
                                     <label class="form-check-label" for="exampleRadios2" style="margin-right: 20px;">
                                     Male
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="form-group col-lg-12" style="text-align: right;">
                                     <input type="submit" class="reg-btn cart-btn" value="REGISTER">
                                 </div>
@@ -173,92 +87,8 @@
                 </div>
             </div>
         </div>
-
-        <footer>
-            <div class="container">
-              <div class="footer-list">
-              <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="info-section">
-                    <h2 class="title">
-                      INFORMATION
-                    </h2>
-                    <ul>
-                      <li><p>The brand</p></li>
-                      <li><p> Local stores</p></li>
-                      <li><p> Customer service</p></li>
-                      <li><p> Privacy & cookies</p></li>
-                      <li><p> Site map</p></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="why-us">
-                    <h2 class="title">
-                      WHY BUY FROM US
-                    </h2>
-                    <ul>
-                      <li><p>Shipping & returns</p></li>
-                      <li><p>Secure shopping</p></li>
-                      <li><p>Testimonials</p></li>
-                      <li><p> Award winning</p></li>
-                      <li><p> Ethical trading</p></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="your-account">
-                    <h2 class="title">
-                      YOUR ACCOUNT
-                    </h2>
-                    <ul>
-                      <li><a href="#">Sign in</a></li>
-                      <li><a href="register.html">Register</a></li>
-                      <li><a href="cart-page.html">View cart</a></li>
-                      <li><a href="#">View your lookbook</a></li>
-                      <li><a href="#">Track an order</a></li>
-                      <li><a href="#">Update information</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="contact-detail">
-                    <h2 class="title">
-                      CONTACT DETAILS
-                    </h2>
-                    <ul>
-                      <li><p>Head Office: Avenue Fashion, <br>
-                        180-182 Regent Street, London.</p></li>
-                      <li><p>Telephone: 0123-456-789 </p></li>
-                        <li><p>Email: support@yourwebsite.com</p></li>
-                      <li class="social d-flex justify-content-start">
-                        <img src="assets/images/icons/icons8-facebook.svg" alt="facebook" class="icons">
-                        <img src="assets/images/icons/icons8-instagram.svg" alt="instagram" class="icons">
-                        <img src="assets/images/icons/icons8-twitter.svg" alt="twitter" class="icons">
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                </div>  
-              </div>    <!--footer-list ends-->
-            </div>
-            <div class="copyright">
-              <p>&copy;2020 shap</p>
-            </div>
-          </footer>
-  
-  
-      </div>  <!----page-wrapper ends-->
-      <!-- Optional JavaScript -->
-      
-      <script src="assets/js/owl-js/jquery.min.js"></script>
-      <script src="assets/js/owl-js/owl.carousel.js"></script>
-      
-      <script src="assets/js/custom.js"></script>
-      
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+{% endblock %}
+{% block para %}
+{% endblock %}
     </body>
   </html>

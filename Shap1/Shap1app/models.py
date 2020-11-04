@@ -24,7 +24,7 @@ class product(models.Model):
     stock_balance=models.IntegerField(null=True,blank=True)
 
     def __str__(self):
-        return self.prod_name
+        return self.prod_id
 
 class order(models.Model):
     order_id=models.CharField(max_length=10,blank=True)

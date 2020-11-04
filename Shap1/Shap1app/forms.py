@@ -8,3 +8,7 @@ class UserCreation(UserCreationForm):
     class Meta:
         model = UserInfo
         fields = ['username','first_name','last_name','email','dob','nationality','country','countrycode','phoneno','gender']
+        forms.DateInput.input_type="date"
+        widget={
+            'dob':forms.DateInput(attrs={"class":"form-control"}),
+        }
