@@ -8,14 +8,14 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!--owl css-->
-    <link rel="stylesheet" href="{% static 'assets/css/owl-css/owl.carousel.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/owl-css/owl.theme.default.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl-css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl-css/owl.theme.default.css' %}">
     <script type="text/javascript">
       $(window).on('load',function(){
           $('#myModal').modal('show');
@@ -32,18 +32,18 @@
               <div class="list-area">
                 <ul class="list-left">
                   <li><a href="#">
-                    <img src="{% static 'assets/images/icons/mail.png' %}" alt="mail" style="width: 20px;">
+                    <img src="{% static 'images/icons/mail.png' %}" alt="mail" style="width: 20px;">
                     info@shap.com</a></li>
                   <li><a href="#">
                     
-                    <img src="{% static 'assets/images/icons/phone.png' %}" alt="phone" style="width: 16px; margin: -3px;">
+                    <img src="{% static 'images/icons/phone.png' %}" alt="phone" style="width: 16px; margin: -3px;">
                     +852 2152 9521</a></li>
                 </ul>
                 <ul class="list-right">
                   <li><a href="register.html">Register</a></li>
                   <li><a href="#">Sign In</a></li>
                   <li><a href="cart-page.html">
-                    <img src="{% static 'assets/images/icons/shopping-cart.png' %}" alt="cart">
+                    <img src="{% static 'images/icons/shopping-cart.png' %}" alt="cart">
                   </a></li>
                 </ul>
               </div>
@@ -52,11 +52,11 @@
           <nav class="navbar navbar-expand-lg">
             <div class="container">
               <a class="navbar-brand" href="index.html">
-                <img src="{% static 'assets/images/logo-shap.png' %}" class="logo-shap" alt="shap_logo">
+                <img src="{% static 'images/logo-shap.png' %}" class="logo-shap" alt="shap_logo">
               </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
-                  <img src="{% static 'assets/images/icons/menu.png' %}" alt="menu">
+                  <img src="{% static 'images/icons/menu.png' %}" alt="menu">
                 </span>
               </button>
             
@@ -68,7 +68,7 @@
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="cart-page.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Beer
-                       <span><img src="{% static 'assets/images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
+                       <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="about.html">About</a>
@@ -80,7 +80,7 @@
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Wine <span><img src="{% static 'assets/images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
+                      Wine <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="#">Action</a>
@@ -89,7 +89,7 @@
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Liquor <span><img src="{% static 'assets/images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
+                      Liquor <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="#">Action</a>
@@ -98,7 +98,7 @@
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Snacks <span><img src="{% static 'assets/images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
+                      Snacks <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="#">Action</a>
@@ -108,7 +108,7 @@
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                   <div class="search-bind">
-                    <img src="{% static 'assets/images/icons/search-icon.png' %}" class="search-icon" alt="search-icon">
+                    <img src="{% static 'images/icons/search-icon.png' %}" class="search-icon" alt="search-icon">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                   </div>
                   <a href="products.html" class="btn item-btn">Show all items</a>
@@ -137,12 +137,12 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="brand-area" style="background: url('assets/images/2-banner.jpg') center/contain no-repeat">
+                <div class="brand-area" style="background: url('images/2-banner.jpg') center/contain no-repeat">
                   <!-- <img src="" alt=""> -->
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="brand-area" style="background: url('assets/images/3-banner.jpg') center/contain no-repeat">
+                <div class="brand-area" style="background: url('images/3-banner.jpg') center/contain no-repeat">
                   <!-- <img src="" alt=""> -->
                 </div>
               </div>
@@ -155,7 +155,7 @@
             <h2 class="title">Exclusive Products</h2>
             <div class="dropdown">
               <button class="item-btn cat-btn-pos dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Categories <span><img src="{% static 'assets/images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
+              Categories <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
             </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="#">Action</a>
@@ -170,7 +170,7 @@
                 <!-- <div class="col-md-3"> -->
                   <div class="item col">
                         <div class="img-area">
-                          <img src="{% static 'assets/images/1.png' %}" alt="products" style="max-width: 33%;">  <!--image size difference-->
+                          <img src="{% static 'images/1.png' %}" alt="products" style="max-width: 33%;">  <!--image size difference-->
                           
                         <div class="shade"></div>
                           <!-- <div class="shade"></div> -->
@@ -189,7 +189,7 @@
                 <div class="col-md-3"> -->
                   <div class="item col">
                       <div class="img-area">
-                        <img src="{% static 'assets/images/2.png' %}" alt="products" style="max-width: 19%;">
+                        <img src="{% static 'images/2.png' %}" alt="products" style="max-width: 19%;">
                         <div class="shade"></div>
                       </div>
                       <div class="desc-area">
@@ -205,7 +205,7 @@
                 <div class="col-md-3"> -->
                   <div class="item col">
                       <div class="img-area">
-                        <img src="{% static 'assets/images/3.png' %}" alt="products">
+                        <img src="{% static 'images/3.png' %}" alt="products">
                         <div class="shade"></div>
                       </div>
                       <div class="desc-area">
@@ -221,7 +221,7 @@
                 <div class="col-md-3"> -->
                   <div class="item col">
                       <div class="img-area">
-                        <img src="{% static 'assets/images/4.png' %}" alt="products">
+                        <img src="{% static 'images/4.png' %}" alt="products">
                         <div class="shade"></div>
                       </div>
                       <div class="desc-area">
@@ -236,7 +236,7 @@
                 <!-- </div> -->
                 <div class="item col">
                   <div class="img-area">
-                    <img src="{% static 'assets/images/2.png' %}" alt="products" style="max-width: 19%;">
+                    <img src="{% static 'images/2.png' %}" alt="products" style="max-width: 19%;">
                     <div class="shade"></div>
                   </div>
                   <div class="desc-area">
@@ -250,7 +250,7 @@
               </div>
               <div class="item col">
                 <div class="img-area">
-                  <img src="{% static 'assets/images/4.png' %}" alt="products">
+                  <img src="{% static 'images/4.png' %}" alt="products">
                   <div class="shade"></div>
                 </div>
                 <div class="desc-area">
@@ -273,22 +273,22 @@
             <div class="row">
               <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                 <div class="img-area">
-                  <img src="{% static 'assets/images/Layer-2.png' %}" alt="">
+                  <img src="{% static 'images/Layer-2.png' %}" alt="">
                 </div>
               </div>
               <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                 <div class="img-area">
-                  <img src="{% static 'assets/images/Layer-3.png' %}" alt="">
+                  <img src="{% static 'images/Layer-3.png' %}" alt="">
                 </div>
               </div>
               <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                 <div class="img-area">
-                  <img src="{% static 'assets/images/Layer-4.png' %}" alt="">
+                  <img src="{% static 'images/Layer-4.png' %}" alt="">
                 </div>
               </div>
               <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                 <div class="img-area">
-                  <img src="{% static 'assets/images/Layer-1.png' %}" alt="">
+                  <img src="{% static 'images/Layer-1.png' %}" alt="">
                 </div>
               </div>
             </div>
@@ -305,7 +305,7 @@
                 <!-- <div class="col-md-3"> -->
                   <div class="item col">
                       <div class="img-area">
-                        <img src="{% static 'assets/images/1.png' %}" alt="products" style="max-width: 33%;">  <!--image size difference-->
+                        <img src="{% static 'images/1.png' %}" alt="products" style="max-width: 33%;">  <!--image size difference-->
                         <div class="shade"></div>
                       </div>
                       <div class="desc-area">
@@ -321,7 +321,7 @@
                 <div class="col-md-3"> -->
                   <div class="item col">
                       <div class="img-area">
-                        <img src="{% static 'assets/images/2.png' %}" alt="products" style="max-width: 19%;">
+                        <img src="{% static 'images/2.png' %}" alt="products" style="max-width: 19%;">
                         <div class="shade"></div>
                       </div>
                       <div class="desc-area">
@@ -337,7 +337,7 @@
                 <div class="col-md-3"> -->
                   <div class="item col">
                       <div class="img-area">
-                        <img src="{% static 'assets/images/3.png' %}" alt="products">
+                        <img src="{% static 'images/3.png' %}" alt="products">
                         <div class="shade"></div>
                       </div>
                       <div class="desc-area">
@@ -353,7 +353,7 @@
                 <div class="col-md-3"> -->
                   <div class="item col">
                       <div class="img-area">
-                        <img src="{% static 'assets/images/4.png' %}" alt="products">
+                        <img src="{% static 'images/4.png' %}" alt="products">
                         <div class="shade"></div>
                       </div>
                       <div class="desc-area">
@@ -368,7 +368,7 @@
                 <!-- </div> -->
                 <div class="item col">
                   <div class="img-area">
-                    <img src="{% static 'assets/images/2.png' %}" alt="products" style="max-width: 19%;">
+                    <img src="{% static 'images/2.png' %}" alt="products" style="max-width: 19%;">
                     <div class="shade"></div>
                   </div>
                   <div class="desc-area">
@@ -382,7 +382,7 @@
                 </div>
                 <div class="item col">
                   <div class="img-area">
-                    <img src="{% static 'assets/images/4.png' %}" alt="products">
+                    <img src="{% static 'images/4.png' %}" alt="products">
                     <div class="shade"></div>
                   </div>
                   <div class="desc-area">
@@ -457,9 +457,9 @@
                     <li><p>Telephone: 0123-456-789 </p></li>
                       <li><p>Email: support@yourwebsite.com</p></li>
                     <li class="social d-flex justify-content-start">
-                      <img src="{% static 'assets/images/icons/icons8-facebook.svg' %}" alt="facebook" class="icons">
-                      <img src="{% static 'assets/images/icons/icons8-instagram.svg' %}" alt="instagram" class="icons">
-                      <img src="{% static 'assets/images/icons/icons8-twitter.svg' %}" alt="twitter" class="icons">
+                      <img src="{% static 'images/icons/icons8-facebook.svg' %}" alt="facebook" class="icons">
+                      <img src="{% static 'images/icons/icons8-instagram.svg' %}" alt="instagram" class="icons">
+                      <img src="{% static 'images/icons/icons8-twitter.svg' %}" alt="twitter" class="icons">
                     </li>
                   </ul>
                 </div>
@@ -490,9 +490,9 @@
     </div>  <!----page-wrapper ends-->
     <!-- Optional JavaScript -->
     
-    <script src="{% static 'assets/js/owl-js/jquery.min.js' %}"></script>
-    <script src="{% static 'assets/js/owl-js/owl.carousel.js' %}"></script>
-    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static 'js/owl-js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/owl-js/owl.carousel.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
     
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
