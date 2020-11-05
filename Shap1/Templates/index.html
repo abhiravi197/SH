@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!--owl css-->
@@ -35,7 +35,7 @@
                     <img src="{% static 'images/icons/mail.png' %}" alt="mail" style="width: 20px;">
                     info@shap.com</a></li>
                   <li><a href="#">
-                    
+
                     <img src="{% static 'images/icons/phone.png' %}" alt="phone" style="width: 16px; margin: -3px;">
                     +852 2152 9521</a></li>
                 </ul>
@@ -59,11 +59,11 @@
                   <img src="{% static 'images/icons/menu.png' %}" alt="menu">
                 </span>
               </button>
-            
+
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="cart-page.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,20 +71,20 @@
                        <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="about.html">About</a>
-                      <a class="dropdown-item" href="products.html">Products</a>
-                      <a class="dropdown-item" href="cart-page.html">Cart</a>
-                      <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
-                      <a class="dropdown-item" href="register.html">Register</a>
-                    </div>
+                      {% for beer in b %}
+                      <a class="dropdown-item" href="">{{beer}}</a>
+                      {% endfor %}
+
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Wine <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
+                      {% for wine in w %}
+                      <a class="dropdown-item" href="">{{wine}}</a>
+                      {% endfor %}
+
                     </div>
                   </li>
                   <li class="nav-item dropdown">
@@ -92,8 +92,9 @@
                       Liquor <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
+                      {% for liquour in l %}
+                      <a class="dropdown-item" href="#">{{liquour}}</a>
+                      {% endfor %}
                     </div>
                   </li>
                   <li class="nav-item dropdown">
@@ -101,17 +102,19 @@
                       Snacks <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
+                      {% for snacks in s %}
+                      <a class="dropdown-item" href="#">{{snacks}}</a>
+                      {% endfor %}
                     </div>
                   </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
+                <form class="form-inline my-2 my-lg-0"  action="{% url 'search_btn'%}" method="POST">
                   <div class="search-bind">
+                    {% csrf_token %}
                     <img src="{% static 'images/icons/search-icon.png' %}" class="search-icon" alt="search-icon">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
                   </div>
-                  <a href="products.html" class="btn item-btn">Show all items</a>
+                  <a href="/view_products/" class="btn item-btn">Show all items</a>
                 </form>
               </div>
             </div>
@@ -125,7 +128,7 @@
                 <div class="banner-caption">
                   <h1>LOREM IPSUM IS
                     SIMPLY DUMMY TEXT </h1>
-                    <p class="sub-caption">of the printing and typesetting 
+                    <p class="sub-caption">of the printing and typesetting
                       industry Lorem Ipsum</p>
                 </div>
               </div>
@@ -158,20 +161,21 @@
               Categories <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
             </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#">Beer</a>
+                <a class="dropdown-item" href="#">Wine</a>
+                <a class="dropdown-item" href="#">Liquor</a>
+                <a class="dropdown-item" href="#">Snacks</a>
               </div>
             </div>
             <div class="row">
               <!---slider section products-->
               <div class="owl-carousel owl-theme">
-                
+
                 <!-- <div class="col-md-3"> -->
                   <div class="item col">
                         <div class="img-area">
                           <img src="{% static 'images/1.png' %}" alt="products" style="max-width: 33%;">  <!--image size difference-->
-                          
+
                         <div class="shade"></div>
                           <!-- <div class="shade"></div> -->
                         </div>
@@ -263,7 +267,7 @@
                 </div>
             </div>
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -301,7 +305,7 @@
             <div class="row">
               <!---slider section products-->
               <div class="owl-carousel owl-theme">
-                
+
                 <!-- <div class="col-md-3"> -->
                   <div class="item col">
                       <div class="img-area">
@@ -464,7 +468,7 @@
                   </ul>
                 </div>
               </div>
-              </div>  
+              </div>
             </div>    <!--footer-list ends-->
           </div>
           <div class="copyright">
@@ -491,11 +495,11 @@
 
     </div>  <!----page-wrapper ends-->
     <!-- Optional JavaScript -->
-    
+
     <script src="{% static 'js/owl-js/jquery.min.js' %}"></script>
     <script src="{% static 'js/owl-js/owl.carousel.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
-    
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

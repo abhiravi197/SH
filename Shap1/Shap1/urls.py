@@ -15,9 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from Shap1app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name='index'),
     path('register/',views.register,name='register'),
+    path('view_products/',views.view_products,name='view_products'),
+    path('search_btn/',views.search_btn,name='search_btn'),
+
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

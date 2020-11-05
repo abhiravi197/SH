@@ -14,4 +14,21 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect('index')
+        else:
+            messages('invalid credentials')
     return render(request,'register.html',{'form':form})
+
+def view_products(request):
+    p=product.objects.all()
+    return render(request,'products.html',{'p':p})
+
+def search_btn(request):
+    if request.method=="POST":
+        search=request.POST['search'].lower()
+        if (product.objects.filter(prod_category=search) or product.objects.filter(prod_subcategory=search) or product.objects.filter(prod_name=search)).exists():
+            type=product.objects.filter(prod_category=search)
+            brand=product.objects.filter(prod_subcategory=search)
+            return render(request,'products.html',{'brand':brand,'type':type})
+        else:
+            print('not found')
+    return render(request,'products.html')

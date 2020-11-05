@@ -16,7 +16,7 @@ class UserInfo(AbstractUser):
 class product(models.Model):
     prod_id=models.CharField(max_length=10,blank=True,)
     prod_name=models.CharField(max_length=100,blank=True)
-    prod_image=models.FileField(upload_to ='')
+    prod_image=models.FileField(upload_to ='media')
     prod_category=models.CharField(max_length=100,blank=True)
     prod_subcategory=models.CharField(max_length=100,blank=True)
     prod_price=models.FloatField(null=True,blank=True)
@@ -24,7 +24,7 @@ class product(models.Model):
     stock_balance=models.IntegerField(null=True,blank=True)
 
     def __str__(self):
-        return self.prod_id
+        return self.prod_name
 
 class order(models.Model):
     order_id=models.CharField(max_length=10,blank=True)

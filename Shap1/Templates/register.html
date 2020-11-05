@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
 
-    
+
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
     <!--owl css-->
     <link rel="stylesheet" href="assets/css/owl-css/owl.carousel.css">
     <link rel="stylesheet" href="assets/css/owl-css/owl.theme.default.css">
-  
+
     <title>SHAP</title>
   </head>
   <body>
@@ -31,53 +31,65 @@
                                 <small>All information required</small>
                             </div>
 
-                            <form class="row" method="POST">
+                            <form class="row"  method="POST">
                               {% csrf_token %}
 
-                              {% for field in form %}
-                              {{ field.label }} 
+                              <!-- {% for field in form %}
+                              {{ field.label }}
                               {{ field }}
-                              {% endfor %}
-                                <!-- <div class="form-group col-lg-6 col-md-6">
-                                    <input type="text" class="form-control" placeholder="First Name *">
+                              {% endfor %} -->
+                                <div class="form-group col-lg-6 col-md-6">
+                                    <input type="text" name="{{form.first_name.html_name}}" class="form-control" placeholder="First Name *">
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6">
-                                    <input type="text" class="form-control" placeholder="Last Name *">
+                                    <input type="text" name="{{form.last_name.html_name}}"class="form-control" placeholder="Last Name *">
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6">
-                                    <input type="email" class="form-control" placeholder="Email *">
+                                    <input type="text" name="{{form.username.html_name}}"class="form-control" placeholder="Username *">
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6">
-                                <input type="text" class="form-control" placeholder="Birthday(DD_MM_YYYY) *">
+                                    <input type="email" name="{{form.email.html_name}}"class="form-control" placeholder="Email *">
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6">
-                                    <input type="password" class="form-control" placeholder="Password *">
+                                <input type="date" name="{{form.dob.html_name}}"class="form-control" placeholder="Birthday(DD_MM_YYYY) *">
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6">
-                                    <input type="text" class="form-control" placeholder="Nationality *">
+                                    <input type="password" name="{{form.password1.html_name}}"class="form-control" placeholder="Password *">
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6">
-                                    <input type="text" class="form-control" placeholder="Country/Territory of Residence *">
+                                    <input type="password" name="{{form.password2.html_name}}"class="form-control" placeholder=" Confirm Password *">
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6">
-                                    <input type="text" class="form-control" placeholder="Country Code *">
+                                    <input type="text" name="{{form.nationality.html_name}}"class="form-control" placeholder="Nationality *">
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6">
-                                    <input type="text" class="form-control" placeholder="Phone Number *">
+                                    <input type="text" name="{{form.country.html_name}}"class="form-control" placeholder="Country/Territory of Residence *">
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6">
+                                    <input type="text" name="{{form.countrycode.html_name}}" class="form-control" placeholder="Country Code *">
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6">
+                                    <input type="text" name="{{form.phoneno.html_name}}" class="form-control" placeholder="Phone Number *">
                                 </div>
                                 <div class="form-check col-lg-6" style="align-self: center;">
-                                    <label for="gender" style="margin-right: 25px;">Gender*</label>
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                  {{form.gender.label}} &nbsp {{form.gender}}
+                                    <!-- <label for="gender" style="margin-right: 25px;">Gender*</label>
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Female" checked>
                                     <label class="form-check-label" for="exampleRadios1" style="margin-right: 20px;">
                                     Female
                                     </label>
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Male" checked>
+                                    <label class="form-check-label" for="exampleRadios1" style="margin-right: 20px;">
+                                    Male
+                                    </label> -->
                                 </div>
-                                <div class="form-check"> 
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                <!-- <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Male">
                                     <label class="form-check-label" for="exampleRadios2" style="margin-right: 20px;">
                                     Male
                                     </label>
                                 </div> -->
+                                {{form.errors}}
                                 <div class="form-group col-lg-12" style="text-align: right;">
                                     <input type="submit" class="reg-btn cart-btn" value="REGISTER">
                                 </div>
