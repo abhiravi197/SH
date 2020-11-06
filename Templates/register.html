@@ -1,0 +1,55 @@
+<!doctype html>
+{% extends 'index.html' %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+    <!--owl css-->
+    <link rel="stylesheet" href="assets/css/owl-css/owl.carousel.css">
+    <link rel="stylesheet" href="assets/css/owl-css/owl.theme.default.css">
+
+    <title>SHAP</title>
+  </head>
+  <body>
+    {% block content %}
+        <div class="register-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 col-sm-12" style="margin: 0 auto;">
+                        <div class="reg-block">
+                            <div class="title">
+                                <h2>Register your Account</h2>
+                                <small>All information required</small>
+                            </div>
+
+                            <form class="row"  method="POST">
+                              {% csrf_token %}
+                              {% for field in form %}
+                                <div class="form-group col-lg-6 col-md-6">
+                                  {{ field }}
+                                </div>
+                                {% endfor %}
+                                {{form.errors}}
+                                <div class="form-group col-lg-12" style="text-align: right;">
+                                    <input type="submit" class="reg-btn cart-btn" value="REGISTER">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+{% block para %}
+{% endblock %}
+    </body>
+  </html>

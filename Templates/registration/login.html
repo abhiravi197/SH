@@ -1,0 +1,64 @@
+<!doctype html>
+{% extends 'index.html' %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+    <!--owl css-->
+    <link rel="stylesheet" href="assets/css/owl-css/owl.carousel.css">
+    <link rel="stylesheet" href="assets/css/owl-css/owl.theme.default.css">
+
+    <title>SHAP</title>
+  </head>
+  <body>
+    <div class="page-wrapper">
+        <!---navbar area-->
+        <!---header ends-->
+{% block content %}
+        <div class="register-section login-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-8 col-sm-12" style="margin: 0 auto;">
+                        <div class="reg-block">
+                            <div class="title">
+                                <h2>Welcome Back!</h2>
+                            </div>
+
+                            <form class="row login-form"   method="POST">
+                              {% csrf_token %}
+                                <div class="user-input-wrp col-lg-12 col-md-12">
+                                    <br/>
+                                    {{form.username}}
+                                </div>
+                                <div class="user-input-wrp col-lg-12 col-md-12">
+                                    <br/>
+                                    {{form.password}}
+                                </div>
+                                <div class="wrap form-group col-lg-12">
+                                    <a href="#">Forgot password?</a>
+                                    <input type="submit" class="reg-btn cart-btn" value="Sign in">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}
+{% block para %}
+{% endblock %}
+      </div>  <!----page-wrapper ends-->
+      
+    </body>
+  </html>

@@ -1,0 +1,290 @@
+<!doctype html>
+{% extends 'index.html' %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+    <!--owl css-->
+    <link rel="stylesheet" href="assets/css/owl-css/owl.carousel.css">
+    <link rel="stylesheet" href="assets/css/owl-css/owl.theme.default.css">
+
+    <title>SHAP</title>
+  </head>
+  <body>
+    <div class="page-wrapper">
+        <!---navbar area-->
+  !---header ends-->
+{% block content %}
+<div class="products-section">
+    <div class="container">
+      {% for message in messages %}
+        {{message}}
+      {% endfor %}
+
+        <div class="row">
+          {% for types in type %}
+            <div class="col-lg-5 col-md-5">
+                <div class="product-img">
+                  <div class="prod owl-carousel owl-theme">
+
+                    <div class="item">
+                    <img src="{{types.prod_image.url}}" alt="products" style="margin: 0 auto;">
+                    </div>
+                    <div class="item">
+                        <img src="{{types.prod_image.url}}" alt="products" style="margin: 0 auto;">
+                    </div>
+                    <div class="item">
+                        <img src="{{types.prod_image.url}}" alt="products" style="margin: 0 auto;">
+                    </div>
+                    <div class="item">
+                        <img src="{{types.prod_image.url}}" alt="products" style="margin: 0 auto;">
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-7">
+                <div class="product-desc">
+                  <button class="cart-btn" style="float: right;">Share</button>
+                    <h2>Product Details</h2>
+                    <p class="name">{{types.prod_name }}<span>(Hurry, Only few left)</span></p>
+                    <ul class="d-flex justify-content-start price">
+                        <li><p>{{types.prod_price}}</p></li>
+                        <li><p class="cl-red strikes">{{types.prod_price}}</p></li>
+                      </ul>
+                      <ul class="d-flex justify-content-start">
+                          <li><button class="cart-btn" style="margin: 0 auto;">Add to cart</button></li>
+                          <li><button class="buy-btn" style="margin: 0 auto;">Buy Now</button></li>
+                      </ul>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+            </div>
+            </div>
+
+<div class="products-section">
+    <div class="container">
+        <div class="row">
+          {% for brands in brand %}
+            <div class="col-lg-5 col-md-5">
+                <div class="product-img">
+                  <div class="prod owl-carousel owl-theme">
+
+                    <div class="item">
+                    <img src="{{brands.prod_image.url}}" alt="products" style="margin: 0 auto;">
+                    </div>
+                    <div class="item">
+                        <img src="{{brands.prod_image.url}}" alt="products" style="margin: 0 auto;">
+                    </div>
+                    <div class="item">
+                        <img src="{{brands.prod_image.url}}" alt="products" style="margin: 0 auto;">
+                    </div>
+                    <div class="item">
+                        <img src="{{brands.prod_image.url}}" alt="products" style="margin: 0 auto;">
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-7">
+                <div class="product-desc">
+                  <button class="cart-btn" style="float: right;">Share</button>
+                    <h2>Product Details</h2>
+                    <p class="name">{{brands.prod_name }}<span>(Hurry, Only few left)</span></p>
+                    <ul class="d-flex justify-content-start price">
+                        <li><p>{{brands.prod_price}}</p></li>
+                        <li><p class="cl-red strikes">{{brands.prod_price}}</p></li>
+                      </ul>
+                      <ul class="d-flex justify-content-start">
+                          <li><button class="cart-btn" style="margin: 0 auto;">Add to cart</button></li>
+                          <li><button class="buy-btn" style="margin: 0 auto;">Buy Now</button></li>
+                      </ul>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+            </div>
+            </div>
+
+        <div class="products-section">
+            <div class="container">
+                <div class="row">
+                  {% for i in p %}
+                    <div class="col-lg-5 col-md-5">
+                        <div class="product-img">
+                          <div class="prod owl-carousel owl-theme">
+
+                            <div class="item">
+                            <img src="{{i.prod_image.url}}" alt="products" style="margin: 0 auto;">
+                            </div>
+                            <div class="item">
+                                <img src="{{i.prod_image.url}}" alt="products" style="margin: 0 auto;">
+                            </div>
+                            <div class="item">
+                                <img src="{{i.prod_image.url}}" alt="products" style="margin: 0 auto;">
+                            </div>
+                            <div class="item">
+                                <img src="{{i.prod_image.url}}" alt="products" style="margin: 0 auto;">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7">
+                        <div class="product-desc">
+                          <button class="cart-btn" style="float: right;">Share</button>
+                            <h2>Product Details</h2>
+                            <p class="name">{{i.prod_name }}<span>(Hurry, Only few left)</span></p>
+                            <ul class="d-flex justify-content-start price">
+                                <li><p>{{i.prod_price}}</p></li>
+                                <li><p class="cl-red strikes">{{i.prod_price}}</p></li>
+                              </ul>
+                              <ul class="d-flex justify-content-start">
+                                  <li><button class="cart-btn" style="margin: 0 auto;">Add to cart</button></li>
+                                  <li><button class="buy-btn" style="margin: 0 auto;">Buy Now</button></li>
+                              </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  </div>
+                </div>
+                <div class="seperator"></div>
+            </div>
+        </div>
+
+
+
+        <div class="exclusive-products">
+          <div class="container" style="position: relative;">
+            <div class="title-area">
+              <h2 class="title">Related Products</h2>
+              <div class="dropdown">
+                <button class="item-btn cat-btn-pos dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories <span><img src="assets/images/icons/Layer -2.png" alt="caret" class="caret-icon"></span>
+              </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <!---slider section products-->
+              <div class="owl-carousel owl-theme">
+
+                <!-- <div class="col-md-3"> -->
+                  <div class="item col">
+                        <div class="img-area">
+                          <img src="assets/images/1.png" alt="products" style="max-width: 33%;">  <!--image size difference-->
+
+                        <div class="shade"></div>
+                          <!-- <div class="shade"></div> -->
+                        </div>
+                        <div class="desc-area">
+                          <h2>MAHARANI GIN</h2>
+                          <ul class="d-flex justify-content-between">
+                            <li><p>S$75.00</p></li>
+                            <li><p class="cl-red strikes">S$148.00</p></li>
+                          </ul>
+                          <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                        </div>
+                      <!-- </div> -->
+                  </div>
+                <!-- </div>
+                <div class="col-md-3"> -->
+                  <div class="item col">
+                      <div class="img-area">
+                        <img src="assets/images/2.png" alt="products" style="max-width: 19%;">
+                        <div class="shade"></div>
+                      </div>
+                      <div class="desc-area">
+                        <h2>BRO CODE BEER</h2>
+                        <ul class="d-flex justify-content-between">
+                          <li><p>S$75.00</p></li>
+                          <li><p class="cl-red strikes">S$148.00</p></li>
+                        </ul>
+                        <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                      </div>
+                  </div>
+                <!-- </div>
+                <div class="col-md-3"> -->
+                  <div class="item col">
+                      <div class="img-area">
+                        <img src="assets/images/3.png" alt="products">
+                        <div class="shade"></div>
+                      </div>
+                      <div class="desc-area">
+                        <h2>BRO CODE BEER</h2>
+                        <ul class="d-flex justify-content-between">
+                          <li><p>S$75.00</p></li>
+                          <li><p class="cl-red strikes">S$148.00</p></li>
+                        </ul>
+                        <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                      </div>
+                  </div>
+                <!-- </div>
+                <div class="col-md-3"> -->
+                  <div class="item col">
+                      <div class="img-area">
+                        <img src="assets/images/4.png" alt="products">
+                        <div class="shade"></div>
+                      </div>
+                      <div class="desc-area">
+                        <h2>BRO CODE BEER</h2>
+                        <ul class="d-flex justify-content-between">
+                          <li><p>S$75.00</p></li>
+                          <li><p class="cl-red strikes">S$148.00</p></li>
+                        </ul>
+                        <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                      </div>
+                  </div>
+                <!-- </div> -->
+                <div class="item col">
+                  <div class="img-area">
+                    <img src="assets/images/2.png" alt="products" style="max-width: 19%;">
+                    <div class="shade"></div>
+                  </div>
+                  <div class="desc-area">
+                    <h2>BRO CODE BEER</h2>
+                    <ul class="d-flex justify-content-between">
+                      <li><p>S$75.00</p></li>
+                      <li><p class="cl-red strikes">S$148.00</p></li>
+                    </ul>
+                    <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                  </div>
+              </div>
+              <div class="item col">
+                <div class="img-area">
+                  <img src="assets/images/4.png" alt="products">
+                  <div class="shade"></div>
+                </div>
+                <div class="desc-area">
+                  <h2>BRO CODE BEER</h2>
+                  <ul class="d-flex justify-content-between">
+                    <li><p>S$75.00</p></li>
+                    <li><p class="cl-red strikes">S$148.00</p></li>
+                  </ul>
+                  <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                </div>
+            </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+{% endblock %}
+{% block para %}
+{% endblock %}
+
+
+    </body>
+  </html>

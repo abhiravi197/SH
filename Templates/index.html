@@ -1,0 +1,518 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--owl css-->
+    <link rel="stylesheet" href="{% static 'css/owl-css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl-css/owl.theme.default.css' %}">
+    <script type="text/javascript">
+      $(window).on('load',function(){
+          $('#myModal').modal('show');
+      });
+  </script>
+    <title>SHAP</title>
+  </head>
+  <body>
+    <div class="page-wrapper">
+        <!---navbar area-->
+        <header>
+          <div class="top-nav">
+            <div class="container">
+              <div class="list-area">
+                <ul class="list-left">
+                  <li><a href="#">
+                    <img src="{% static 'images/icons/mail.png' %}" alt="mail" style="width: 20px;">
+                    info@shap.com</a></li>
+                  <li><a href="#">
+
+                    <img src="{% static 'images/icons/phone.png' %}" alt="phone" style="width: 16px; margin: -3px;">
+                    +852 2152 9521</a></li>
+                </ul>
+                <ul class="list-right">
+
+                  <li><a href="{% url 'register' %}">Register</a></li>
+                  <li><a href="{% url 'login' %}">Sign In</a></li>
+
+                  <li><a href="{% url 'login' %}">{{user}}</a></li>
+
+                  {% if user.is_authenticated %}
+                  <li><a href="{% url 'logout' %}">SignOut</a></li>
+                  {% endif %}
+                  <li><a href="cart-page.html">
+                    <img src="{% static 'images/icons/shopping-cart.png' %}" alt="cart">
+                  </a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <nav class="navbar navbar-expand-lg">
+            <div class="container">
+              <a class="navbar-brand" href="index.html">
+                <img src="{% static 'images/logo-shap.png' %}" class="logo-shap" alt="shap_logo">
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                  <img src="{% static 'images/icons/menu.png' %}" alt="menu">
+                </span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="cart-page.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Beer
+                       <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      {% for beer in b %}
+                      <a class="dropdown-item" href="{% url 'filter_catg' filter=beer.prod_subcategory %}">{{beer.prod_subcategory}}</a>
+                      {% endfor %}
+
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Wine <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      {% for wine in w %}
+                      <a class="dropdown-item" href="{% url 'filter_catg' filter=wine.prod_subcategory %}">{{wine.prod_subcategory}}</a>
+                      {% endfor %}
+
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Liquor <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      {% for liquor in l %}
+                      <a class="dropdown-item" href="{% url 'filter_catg' filter=liquor.prod_subcategory %}">{{liquor.prod_subcategory}}</a>
+                      {% endfor %}
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Snacks <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      {% for snacks in s %}
+                      <a class="dropdown-item" href="{% url 'filter_catg' filter=snacks.prod_subcategory %}">{{snacks.prod_subcategory}}</a>
+                      {% endfor %}
+                    </div>
+                  </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0"  action="{% url 'search_btn' %}" method="POST">
+                  <div class="search-bind">
+                    {% csrf_token %}
+                    <button type="submit">
+                      <img src="{% static 'images/icons/search-icon.png' %}" class="search-icon" alt="search-icon">
+                    </button>
+                    <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+
+                  </div>
+                  <a href="/view_products/" class="btn item-btn">Show all items</a>
+                </form>
+              </div>
+            </div>
+          </nav>
+        </header><!---header ends-->
+{% block content %}
+        <div class="main-banner">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="banner-caption">
+                  <h1>LOREM IPSUM IS
+                    SIMPLY DUMMY TEXT </h1>
+                    <p class="sub-caption">of the printing and typesetting
+                      industry Lorem Ipsum</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="brand-featuring">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="brand-area" style="background: url({% static 'images/2-banner.jpg' %}) center/contain no-repeat">
+                  <!-- <img src="" alt=""> -->
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="brand-area" style="background: url({% static 'images/3-banner.jpg' %}) center/contain no-repeat">
+                  <!-- <img src="" alt=""> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exclusive-products">
+          <div class="container" style="position: relative;">
+            <h2 class="title">Exclusive Products</h2>
+            <div class="dropdown">
+              <button class="item-btn cat-btn-pos dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categories <span><img src="{% static 'images/icons/Layer -2.png' %}" alt="caret" class="caret-icon"></span>
+            </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Beer</a>
+                <a class="dropdown-item" href="#">Wine</a>
+                <a class="dropdown-item" href="#">Liquor</a>
+                <a class="dropdown-item" href="#">Snacks</a>
+              </div>
+            </div>
+            <div class="row">
+              <!---slider section products-->
+              <div class="owl-carousel owl-theme">
+
+                <!-- <div class="col-md-3"> -->
+                  <div class="item col">
+                        <div class="img-area">
+                          <img src="{% static 'images/1.png' %}" alt="products" style="max-width: 33%;">  <!--image size difference-->
+
+                        <div class="shade"></div>
+                          <!-- <div class="shade"></div> -->
+                        </div>
+                        <div class="desc-area">
+                          <h2>MAHARANI GIN</h2>
+                          <ul class="d-flex justify-content-between">
+                            <li><p>S$75.00</p></li>
+                            <li><p class="cl-red strikes">S$148.00</p></li>
+                          </ul>
+                          <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                        </div>
+                      <!-- </div> -->
+                  </div>
+                <!-- </div>
+                <div class="col-md-3"> -->
+                  <div class="item col">
+                      <div class="img-area">
+                        <img src="{% static 'images/2.png' %}" alt="products" style="max-width: 19%;">
+                        <div class="shade"></div>
+                      </div>
+                      <div class="desc-area">
+                        <h2>BRO CODE BEER</h2>
+                        <ul class="d-flex justify-content-between">
+                          <li><p>S$75.00</p></li>
+                          <li><p class="cl-red strikes">S$148.00</p></li>
+                        </ul>
+                        <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                      </div>
+                  </div>
+                <!-- </div>
+                <div class="col-md-3"> -->
+                  <div class="item col">
+                      <div class="img-area">
+                        <img src="{% static 'images/3.png' %}" alt="products">
+                        <div class="shade"></div>
+                      </div>
+                      <div class="desc-area">
+                        <h2>BRO CODE BEER</h2>
+                        <ul class="d-flex justify-content-between">
+                          <li><p>S$75.00</p></li>
+                          <li><p class="cl-red strikes">S$148.00</p></li>
+                        </ul>
+                        <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                      </div>
+                  </div>
+                <!-- </div>
+                <div class="col-md-3"> -->
+                  <div class="item col">
+                      <div class="img-area">
+                        <img src="{% static 'images/4.png' %}" alt="products">
+                        <div class="shade"></div>
+                      </div>
+                      <div class="desc-area">
+                        <h2>BRO CODE BEER</h2>
+                        <ul class="d-flex justify-content-between">
+                          <li><p>S$75.00</p></li>
+                          <li><p class="cl-red strikes">S$148.00</p></li>
+                        </ul>
+                        <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                      </div>
+                  </div>
+                <!-- </div> -->
+                <div class="item col">
+                  <div class="img-area">
+                    <img src="{% static 'images/2.png' %}" alt="products" style="max-width: 19%;">
+                    <div class="shade"></div>
+                  </div>
+                  <div class="desc-area">
+                    <h2>BRO CODE BEER</h2>
+                    <ul class="d-flex justify-content-between">
+                      <li><p>S$75.00</p></li>
+                      <li><p class="cl-red strikes">S$148.00</p></li>
+                    </ul>
+                    <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                  </div>
+              </div>
+              <div class="item col">
+                <div class="img-area">
+                  <img src="{% static 'images/4.png' %}" alt="products">
+                  <div class="shade"></div>
+                </div>
+                <div class="desc-area">
+                  <h2>BRO CODE BEER</h2>
+                  <ul class="d-flex justify-content-between">
+                    <li><p>S$75.00</p></li>
+                    <li><p class="cl-red strikes">S$148.00</p></li>
+                  </ul>
+                  <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                </div>
+            </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-offers">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="img-area">
+                  <img src="{% static 'images/Layer-2.png' %}" alt="">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="img-area">
+                  <img src="{% static 'images/Layer-3.png' %}" alt="">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="img-area">
+                  <img src="{% static 'images/Layer-4.png' %}" alt="">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="img-area">
+                  <img src="{% static 'images/Layer-1.png' %}" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="featured-products">
+          <div class="container">
+            <h2 class="title">Featured Products</h2>
+            <div class="row">
+              <!---slider section products-->
+              <div class="owl-carousel owl-theme">
+
+                <!-- <div class="col-md-3"> -->
+                  <div class="item col">
+                      <div class="img-area">
+                        <img src="{% static 'images/1.png' %}" alt="products" style="max-width: 33%;">  <!--image size difference-->
+                        <div class="shade"></div>
+                      </div>
+                      <div class="desc-area">
+                        <h2>MAHARANI GIN</h2>
+                        <ul class="d-flex justify-content-between">
+                          <li><p>S$75.00</p></li>
+                          <li><p class="cl-red strikes">S$148.00</p></li>
+                        </ul>
+                        <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                      </div>
+                  </div>
+                <!-- </div>
+                <div class="col-md-3"> -->
+                  <div class="item col">
+                      <div class="img-area">
+                        <img src="{% static 'images/2.png' %}" alt="products" style="max-width: 19%;">
+                        <div class="shade"></div>
+                      </div>
+                      <div class="desc-area">
+                        <h2>BRO CODE BEER</h2>
+                        <ul class="d-flex justify-content-between">
+                          <li><p>S$75.00</p></li>
+                          <li><p class="cl-red strikes">S$148.00</p></li>
+                        </ul>
+                        <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                      </div>
+                  </div>
+                <!-- </div>
+                <div class="col-md-3"> -->
+                  <div class="item col">
+                      <div class="img-area">
+                        <img src="{% static 'images/3.png' %}" alt="products">
+                        <div class="shade"></div>
+                      </div>
+                      <div class="desc-area">
+                        <h2>BRO CODE BEER</h2>
+                        <ul class="d-flex justify-content-between">
+                          <li><p>S$75.00</p></li>
+                          <li><p class="cl-red strikes">S$148.00</p></li>
+                        </ul>
+                        <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                      </div>
+                  </div>
+                <!-- </div>
+                <div class="col-md-3"> -->
+                  <div class="item col">
+                      <div class="img-area">
+                        <img src="{% static 'images/4.png' %}" alt="products">
+                        <div class="shade"></div>
+                      </div>
+                      <div class="desc-area">
+                        <h2>BRO CODE BEER</h2>
+                        <ul class="d-flex justify-content-between">
+                          <li><p>S$75.00</p></li>
+                          <li><p class="cl-red strikes">S$148.00</p></li>
+                        </ul>
+                        <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                      </div>
+                  </div>
+                <!-- </div> -->
+                <div class="item col">
+                  <div class="img-area">
+                    <img src="{% static 'images/2.png' %}" alt="products" style="max-width: 19%;">
+                    <div class="shade"></div>
+                  </div>
+                  <div class="desc-area">
+                    <h2>BRO CODE BEER</h2>
+                    <ul class="d-flex justify-content-between">
+                      <li><p>S$75.00</p></li>
+                      <li><p class="cl-red strikes">S$148.00</p></li>
+                    </ul>
+                    <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                  </div>
+                </div>
+                <div class="item col">
+                  <div class="img-area">
+                    <img src="{% static 'images/4.png' %}" alt="products">
+                    <div class="shade"></div>
+                  </div>
+                  <div class="desc-area">
+                    <h2>BRO CODE BEER</h2>
+                    <ul class="d-flex justify-content-between">
+                      <li><p>S$75.00</p></li>
+                      <li><p class="cl-red strikes">S$148.00</p></li>
+                    </ul>
+                    <button class="cart-btn" style="margin: 0 auto;">Add to cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+{% endblock %}
+        <footer>
+          <div class="container">
+            <div class="footer-list">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="info-section">
+                  <h2 class="title">
+                    INFORMATION
+                  </h2>
+                  <ul>
+                    <li><p>The brand</p></li>
+                    <li><p> Local stores</p></li>
+                    <li><p> Customer service</p></li>
+                    <li><p> Privacy & cookies</p></li>
+                    <li><p> Site map</p></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="why-us">
+                  <h2 class="title">
+                    WHY BUY FROM US
+                  </h2>
+                  <ul>
+                    <li><p>Shipping & returns</p></li>
+                    <li><p>Secure shopping</p></li>
+                    <li><p>Testimonials</p></li>
+                    <li><p> Award winning</p></li>
+                    <li><p> Ethical trading</p></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="your-account">
+                  <h2 class="title">
+                    YOUR ACCOUNT
+                  </h2>
+                  <ul>
+                    <li><a href="#">Sign in</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="cart-page.html">View cart</a></li>
+                    <li><a href="#">View your lookbook</a></li>
+                    <li><a href="#">Track an order</a></li>
+                    <li><a href="#">Update information</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="contact-detail">
+                  <h2 class="title">
+                    CONTACT DETAILS
+                  </h2>
+                  <ul>
+                    <li><p>Head Office: Avenue Fashion, <br>
+                      180-182 Regent Street, London.</p></li>
+                    <li><p>Telephone: 0123-456-789 </p></li>
+                      <li><p>Email: support@yourwebsite.com</p></li>
+                    <li class="social d-flex justify-content-start">
+                      <img src="{% static 'images/icons/icons8-facebook.svg' %}" alt="facebook" class="icons">
+                      <img src="{% static 'images/icons/icons8-instagram.svg' %}" alt="instagram" class="icons">
+                      <img src="{% static 'images/icons/icons8-twitter.svg' %}" alt="twitter" class="icons">
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              </div>
+            </div>    <!--footer-list ends-->
+          </div>
+          <div class="copyright">
+            <p>&copy;2020 shap</p>
+          </div>
+        </footer>
+        <!-- Modal -->
+        {% block para %}
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <h2 class="verify-h2">We Need to Verify Your Age</h2>
+                <p class="verify-p">Are you 18 or older ?</p>
+                <button type="button" class="btn-verify"
+                style="background-color: #777676; border-color: #777676;">No</button>
+                <button type="button" class="btn-verify" data-dismiss="modal"
+                style="background-color:#30A72B; border-color: #30A72B;">Yes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endblock %}
+
+    </div>  <!----page-wrapper ends-->
+    <!-- Optional JavaScript -->
+
+    <script src="{% static 'js/owl-js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/owl-js/owl.carousel.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>
